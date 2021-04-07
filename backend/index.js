@@ -40,10 +40,12 @@ io.on("connect", (socket) => {
 
   socket.on("sendMessage", (message, callback) => {
     const user = getUser(socket.id);
+    const date = new Date().toLocaleTimeString().slice(0, -3);
 
     io.to(user.room).emit("message", {
       user: user.name,
       text: message,
+      dateSendMessage: date,
     });
 
     callback();
