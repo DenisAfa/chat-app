@@ -2,10 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import "./style.scss";
+import Provider from "./context";
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Provider>
+      <App />
+    </Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );

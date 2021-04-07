@@ -1,0 +1,16 @@
+.chat {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  padding: 2px;
+  border: 2px solid #D3D3D3;
+}
+
+.chat__field {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 70%;
+}
+
+/*# sourceMappingURL=style.css.map */

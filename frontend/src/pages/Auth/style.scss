@@ -1,0 +1,12 @@
+$color-border: #2c68fa;
+
+.auth{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px solid $color-border;
+    border-radius: 5%;
+    width: 35%;
+    height: 30%;
+}

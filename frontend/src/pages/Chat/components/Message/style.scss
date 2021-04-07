@@ -1,0 +1,43 @@
+$color-my-box: #2c68fa;
+$color-other-box: #a6a6a6;
+$color-text: #fff;
+
+.message__wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 5%;
+    margin-top: 3px;
+
+}
+
+.message__box {
+    border-radius: 20px;
+    padding: 5px 20px;
+    color: $color-text;
+    display: inline-block;
+    max-width: 80%;
+    &_my {
+        background: $color-my-box;
+    }
+    &_other {
+        background: $color-other-box;
+    }
+}
+
+.message__text {
+    width: 100%;
+    letter-spacing: 0;
+    float: left;
+    font-size: 1.1em;
+    word-wrap: break-word;
+}
+
+.text {
+    display: flex;
+    align-items: center;
+    color: #828282;
+    letter-spacing: 0.3px;
+    padding: 0px 10px;
+}
+
+

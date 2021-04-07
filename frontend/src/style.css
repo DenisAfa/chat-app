@@ -1,0 +1,10 @@
+.main-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: normal;
+}
+
+/*# sourceMappingURL=style.css.map */

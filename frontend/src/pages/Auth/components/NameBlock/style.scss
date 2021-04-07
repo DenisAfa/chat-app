@@ -1,0 +1,38 @@
+$color-input: rgba(75,138,255,.1);
+$color-button: #2c68fa;
+$color-button-hover: #0541d4;
+$color-button-text: #fff;
+
+.auth__welcome {
+    font-weight: bold;
+
+}
+
+.auth__input {
+    border: none;
+    border-radius: 0;
+    padding: 2%;
+    width: 80%;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: $color-input;
+    color: #4b8aff;
+    &:focus{
+        outline: none;
+    }
+}
+
+.auth__button {
+    text-transform: uppercase;
+    text-decoration: none;
+    background: $color-button;
+    padding: 8px 30px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    color: $color-button-text;
+    &:hover {
+        cursor: pointer;
+        background: $color-button-hover;
+    }
+}

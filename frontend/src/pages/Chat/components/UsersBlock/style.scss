@@ -1,0 +1,26 @@
+$color-border: #D3D3D3;
+$color-users-item-block: #2c68fa;
+$color-text: #fff;
+
+.users{
+    width: 15%;
+    padding-left: 2px;
+    border-left: 2px solid $color-border;
+}
+
+.users__title {
+    text-align: center;
+    border-bottom: 2px solid $color-border;
+}
+
+.users__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-users-item-block;
+    border-radius: 4px;
+    height: 30px;
+    color: $color-text;
+    font-weight: 500;
+    margin: 5px 0px;
+}
