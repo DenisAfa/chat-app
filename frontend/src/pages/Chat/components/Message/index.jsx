@@ -4,6 +4,7 @@ import { Context } from "../../../../context";
 
 const Message = ({ message: { user, text } }) => {
   const { userName } = useContext(Context);
+  const date = new Date().toLocaleTimeString().slice(0, -3);
   let isSentByCurrentUser = false;
   const trimmedName = userName.trim().toLowerCase();
 
@@ -16,11 +17,17 @@ const Message = ({ message: { user, text } }) => {
       <div className="text">
         <p className="message__text">{text}</p>
       </div>
-      <p className=" message__box message__box_my">{trimmedName}</p>
+      <div className="message__box-wrapper">
+        <p className=" message__box message__box_my">{trimmedName}</p>
+        <span className="message__time">{date}</span>
+      </div>
     </div>
   ) : (
     <div className="message__wrapper">
-      <p className="message__box message__box_other">{user}</p>
+      <div className="message__box-wrapper">
+        <p className="message__box message__box_other">{user}</p>
+        <span className="message__time">{date}</span>
+      </div>
       <div className="message__text">
         <p className="text">{text}</p>
       </div>

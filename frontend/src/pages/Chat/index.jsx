@@ -46,7 +46,6 @@ const Chat = () => {
     });
 
     socket.on("roomData", ({ users }) => {
-      //TODO взять отсюда юзеров и создать их список в комнате
       changeUsersList(users);
     });
   }, []);

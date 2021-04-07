@@ -1,19 +1,19 @@
 $color-my-box: #2c68fa;
 $color-other-box: #a6a6a6;
-$color-text: #fff;
+$color-user-name-text: #fff;
+$color-message-text: #828282;
 
 .message__wrapper {
     display: flex;
     justify-content: flex-end;
     padding: 0 5%;
     margin-top: 3px;
-
 }
 
 .message__box {
     border-radius: 20px;
     padding: 5px 20px;
-    color: $color-text;
+    color: $color-user-name-text;
     display: inline-block;
     max-width: 80%;
     &_my {
@@ -22,6 +22,7 @@ $color-text: #fff;
     &_other {
         background: $color-other-box;
     }
+    margin-bottom: 0px;
 }
 
 .message__text {
@@ -34,10 +35,20 @@ $color-text: #fff;
 
 .text {
     display: flex;
-    align-items: center;
-    color: #828282;
+    flex-direction: column;
+    color: $color-message-text;
     letter-spacing: 0.3px;
     padding: 0px 10px;
 }
 
+.message__time {
+    font-size: 10px;
+    padding-top: 2px;
+    color: $color-other-box;
+}
 
+.message__box-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

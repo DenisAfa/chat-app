@@ -59,12 +59,10 @@ const Provider = ({ children }) => {
     dispatch({ type: CHANGE_AUTH_STATUS, newAuthStatus });
   const changeMessage = (newMessage) =>
     dispatch({ type: CHANGE_MESSAGE, newMessage });
-  const changeMessagesList = (newMessage) => {
+  const changeMessagesList = (newMessage) =>
     dispatch({ type: CHANGE_MESSAGES_LIST, newMessage });
-  };
-  const changeUsersList = (newUsersList) => {
+  const changeUsersList = (newUsersList) =>
     dispatch({ type: CHANGE_USERS_LIST, newUsersList });
-  };
 
   return (
     <Context.Provider
