@@ -3,9 +3,5 @@
   overflow: auto;
   flex: auto;
 }
-.field__messages::-webkit-scrollbar {
-  width: 10px;
-  background-color: #f9f9fd;
-}
 
 /*# sourceMappingURL=style.css.map */

@@ -1,9 +1,38 @@
+$color-border: rgba(75,138,255,.1);
 
 .main-wrapper {
-    height: 100vh;
+    height: 95vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     font-family: 'IBM Plex Mono', monospace;
     font-weight: normal;
+}
+
+.main__title {
+    width: 8ch;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid transparent;
+    animation: flashing-border 0.25s step-end 9,
+    printed-text 2s steps(8);
+}
+
+@keyframes flashing-border {
+    0%{
+        border-right: 4px solid $color-border;
+    }
+    50% {
+        border-right: 4px solid transparent;
+    }
+    100%{
+        border-right: 4px solid $color-border;
+    }
+}
+
+@keyframes printed-text {
+    from{
+        width: 0;
+    }
 }
