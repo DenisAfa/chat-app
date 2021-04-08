@@ -6,7 +6,9 @@ const UsersBlock = () => {
   const { roomName, users } = useContext(Context);
 
   const userElement = Array.from(users).map((user) => {
-    if (roomName === user.room) {
+    const currentRoom = roomName.trim().toLowerCase();
+    const userRoom = user.room.trim().toLowerCase();
+    if (currentRoom === userRoom) {
       return (
         <div className="users__item" key={user.id}>
           {user.name}

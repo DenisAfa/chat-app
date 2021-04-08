@@ -5,11 +5,13 @@ import closeIcon from "../../../../../../assets/icons/closeIcon.png";
 import { useLocation } from "react-router";
 import queryString from "query-string";
 import { Context } from "../../../../../../context";
+import { NavLink } from "react-router-dom";
+import { CHAT_PATH } from "../../../../../../App";
 
 const Room = ({ roomName }) => {
   const location = useLocation();
   const { room } = queryString.parse(location.search);
-  const { deleteRoom } = useContext(Context);
+  const { deleteRoom, userName } = useContext(Context);
 
   const isRoomActive = roomName === room;
 
@@ -19,16 +21,24 @@ const Room = ({ roomName }) => {
 
   return (
     <div className="chat__rooms rooms">
-      <div className="rooms__info">
-        {isRoomActive ? (
-          <img className="rooms__onlineIcon" src={onlineIcon} alt="online" />
-        ) : null}
+      <NavLink
+        to={`${CHAT_PATH}?name=${userName}&room=${roomName}`}
+        className="room__link"
+      >
+        <div className="rooms__info">
+          {isRoomActive ? (
+            <img className="rooms__onlineIcon" src={onlineIcon} alt="online" />
+          ) : null}
 
-        <h3>{roomName}</h3>
-      </div>
-      <div className="rooms__exit">
-        <img src={closeIcon} alt="offline" onClick={onDeleteRoom} />
-      </div>
+          <h3>{roomName}</h3>
+        </div>
+      </NavLink>
+      <img
+        src={closeIcon}
+        className="rooms__exit"
+        alt="offline"
+        onClick={onDeleteRoom}
+      />
     </div>
   );
 };

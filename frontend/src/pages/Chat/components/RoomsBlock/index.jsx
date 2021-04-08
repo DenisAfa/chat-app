@@ -7,17 +7,13 @@ import { NavLink } from "react-router-dom";
 import { CHAT_PATH } from "../../../../App";
 
 const RoomsBlock = () => {
-  const { rooms, userName } = useContext(Context);
+  const { rooms } = useContext(Context);
 
   const roomElement = Array.from(rooms).map((room, ind) => (
-    <NavLink
-      to={`${CHAT_PATH}?name=${userName}&room=${room}`}
-      className="room__link"
-      key={ind}
-    >
-      <Room roomName={room} />
-    </NavLink>
+    <Room roomName={room} key={ind} />
   ));
+  {
+  }
 
   return (
     <div className="rooms__wrapper">

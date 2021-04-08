@@ -23,6 +23,10 @@ const Chat = () => {
     changeMessagesList,
     changeUsersList,
     addRoom,
+    userName,
+    roomName,
+    rooms,
+    users,
   } = useContext(Context);
 
   const location = useLocation();
@@ -32,15 +36,19 @@ const Chat = () => {
 
     socket = io(ENDPOINT, { transports: ["websocket"] });
 
+    socket.emit("join", { name, room }, (error) => {
+      if (error) {
+        console.log(error);
+      }
+    });
+
+    if (roomName !== room) {
+      socket.emit("leaveRoom", { userName, roomName });
+    }
+    console.log(users);
     changeUserName(name);
     changeRoomName(room);
     addRoom(room);
-
-    socket.emit("join", { name, room }, (error) => {
-      if (error) {
-        alert(error);
-      }
-    });
   }, [ENDPOINT, location.search]);
 
   useEffect(() => {
@@ -49,9 +57,10 @@ const Chat = () => {
     });
 
     socket.on("roomData", ({ users }) => {
+      console.log(users);
       changeUsersList(users);
     });
-  }, []);
+  }, [location.search]);
 
   const sendMessage = (e) => {
     e.preventDefault();

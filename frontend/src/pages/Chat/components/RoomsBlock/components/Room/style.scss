@@ -1,6 +1,10 @@
 $color-active-room: #2c68fa;
 $color-text: #fff;
 
+.room-wrapper{
+    position: relative;
+}
+
 .chat__rooms {
     display: flex;
     align-items: center;
@@ -13,7 +17,6 @@ $color-text: #fff;
 
 
 .rooms__info {
-    flex: 0.5;
     display: flex;
     align-items: center;
     margin-left: 5%;
@@ -26,8 +29,14 @@ $color-text: #fff;
     margin-right: 5%;
     cursor: pointer;
     z-index: 10;
+
 }
 
 .rooms__onlineIcon {
     margin-right: 5%;
+}
+
+.room__link {
+    text-decoration: none;
+    width: 90%;
 }

@@ -1,39 +1,43 @@
 import React, { useContext, useRef } from "react";
 import "./style.scss";
 import { Context } from "../../../../../../context";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CHAT_PATH } from "../../../../../../App";
 
 const RoomCreator = () => {
-  const { addRoom, userName } = useContext(Context);
-  const roomName = useRef(null);
-  const newRoom = roomName.current?.value;
+  const { addRoom, userName, roomName, changeRoomName } = useContext(Context);
+  const currentRoomName = useRef("");
+
+  const onChangeRoomName = (e) => {
+    const newRoomName = e.target.value;
+    changeRoomName(newRoomName);
+  };
 
   const onCreateNewRoom = (e) => {
-    if (newRoom !== "") {
-      addRoom(newRoom);
+    if (roomName !== "") {
+      addRoom(roomName);
     }
-    e.preventDefault();
-    roomName.current.value = "";
+    currentRoomName.current.value = "";
   };
 
   return (
-    <form action="" className="field__form rooms__form">
+    <div className="field__form rooms__form">
       <input
         type="text"
         placeholder="Room name"
         className="rooms__input"
-        ref={roomName}
+        ref={currentRoomName}
+        onChange={onChangeRoomName}
       />
-      <NavLink to={`${CHAT_PATH}?name=${userName}&room=${newRoom}`}>
-        <button
-          className="auth__button rooms__button"
-          onClick={onCreateNewRoom}
-        >
-          Create
-        </button>
-      </NavLink>
-    </form>
+
+      <Link
+        to={`${CHAT_PATH}?name=${userName}&room=${roomName}`}
+        onClick={onCreateNewRoom}
+        className="auth__button rooms__button"
+      >
+        Create
+      </Link>
+    </div>
   );
 };
 

@@ -25,6 +25,7 @@ io.on("connect", (socket) => {
     socket.emit("message", {
       user: "info",
       text: `${user.name}, welcome to room ${user.room}.`,
+      currentRoom: user.room,
     });
     socket.broadcast
       .to(user.room)
@@ -44,18 +45,20 @@ io.on("connect", (socket) => {
     io.to(user.room).emit("message", {
       user: user.name,
       text: message,
+      currentRoom: user.room,
     });
 
     callback();
   });
 
-  socket.on("disconnect", () => {
-    const user = removeUser(socket.id);
+  socket.on("leaveRoom", ({ userName, roomName }) => {
+    const user = removeUser(userName, roomName);
 
     if (user) {
       io.to(user.room).emit("message", {
         user: "info",
         text: `${user.name} has left.`,
+        currentRoom: user.room,
       });
       io.to(user.room).emit("roomData", {
         room: user.room,
