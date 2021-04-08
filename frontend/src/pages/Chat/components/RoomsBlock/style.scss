@@ -1,8 +1,10 @@
-$color-active-room: #2c68fa;
-$color-text: #fff;
 $color-border: #D3D3D3;
+$color-button: #2c68fa;
+
 
 .rooms__wrapper {
+    display: flex;
+    flex-direction: column;
     width: 15%;
     padding-right: 2px;
     border-right: 2px solid $color-border;
@@ -12,32 +14,7 @@ $color-border: #D3D3D3;
     text-align: center;
     border-bottom: 2px solid $color-border;
 }
-
-.chat__rooms {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: $color-active-room;
-    border-radius: 4px;
-    height: 50px;
+.room__link {
+    text-decoration: none;
 }
 
-
-.rooms__info {
-    flex: 0.5;
-    display: flex;
-    align-items: center;
-    margin-left: 5%;
-    color: $color-text;
-}
-
-.rooms__exit {
-    display: flex;
-    flex: 0.5;
-    justify-content: flex-end;
-    margin-right: 5%;
-}
-
-.rooms__onlineIcon {
-    margin-right: 5%;
-}

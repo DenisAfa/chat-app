@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 
 export const Context = React.createContext();
 
@@ -8,8 +8,11 @@ const CHANGE_AUTH_STATUS = "CHANGE-AUTH-STATUS";
 const CHANGE_MESSAGE = "CHANGE-MESSAGE";
 const CHANGE_MESSAGES_LIST = "CHANGE-MESSAGES-LIST";
 const CHANGE_USERS_LIST = "CHANGE-USERS-LIST";
+const ADD_ROOM = "ADD-ROOM";
+const DELETE_ROOM = "DELETE-ROOM";
 
 const reducer = (state, action) => {
+  console.log(state);
   switch (action.type) {
     case CHANGE_USER_NAME:
       return { ...state, userName: action.newUserName };
@@ -36,20 +39,50 @@ const reducer = (state, action) => {
         users: action.newUsersList,
       };
     }
+    case ADD_ROOM: {
+      if (state.rooms.includes(action.newRoom)) {
+        return state;
+      } else {
+        const copyRooms = state.rooms.slice();
+        copyRooms.push(action.newRoom);
+        return {
+          ...state,
+          rooms: copyRooms,
+        };
+      }
+    }
+    case DELETE_ROOM: {
+      const roomPosition = state.rooms.indexOf(action.room);
+      state.rooms.splice(roomPosition, 1);
+      const copyRooms = state.rooms.slice();
+      return {
+        ...state,
+        rooms: copyRooms,
+      };
+    }
     default:
       return state;
   }
 };
 
 const Provider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, {
-    userName: "",
-    roomName: "",
-    message: "",
-    messages: [],
-    users: [],
-    hasUserAuth: false,
-  });
+  const initialState = localStorage.getItem("state")
+    ? JSON.parse(localStorage.state)
+    : {
+        userName: "",
+        roomName: "",
+        message: "",
+        messages: [],
+        users: [],
+        rooms: [],
+        hasUserAuth: false,
+      };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem("state", JSON.stringify(state));
+  }, [state]);
 
   const changeUserName = (newUserName) =>
     dispatch({ type: CHANGE_USER_NAME, newUserName });
@@ -63,6 +96,8 @@ const Provider = ({ children }) => {
     dispatch({ type: CHANGE_MESSAGES_LIST, newMessage });
   const changeUsersList = (newUsersList) =>
     dispatch({ type: CHANGE_USERS_LIST, newUsersList });
+  const addRoom = (newRoom) => dispatch({ type: ADD_ROOM, newRoom });
+  const deleteRoom = (room) => dispatch({ type: DELETE_ROOM, room });
 
   return (
     <Context.Provider
@@ -73,12 +108,15 @@ const Provider = ({ children }) => {
         message: state.message,
         messages: state.messages,
         users: state.users,
+        rooms: state.rooms,
         changeUserName,
         changeRoomName,
         changeAuthStatus,
         changeMessage,
         changeMessagesList,
         changeUsersList,
+        addRoom,
+        deleteRoom,
       }}
     >
       {children}

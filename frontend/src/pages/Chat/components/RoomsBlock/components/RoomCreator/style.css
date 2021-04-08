@@ -1,0 +1,21 @@
+.rooms__form {
+  margin-top: auto;
+  height: auto !important;
+  flex-direction: column;
+  border: none !important;
+}
+
+.rooms__input {
+  border: none;
+  border-radius: 0;
+  padding: 10px 0px;
+  background-color: rgba(75, 138, 255, 0.1);
+  color: #4b8aff;
+  text-align: center;
+}
+
+input:focus {
+  outline: none;
+}
+
+/*# sourceMappingURL=style.css.map */

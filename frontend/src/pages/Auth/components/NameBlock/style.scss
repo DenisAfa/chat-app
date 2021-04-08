@@ -2,6 +2,7 @@ $color-input: rgba(75,138,255,.1);
 $color-button: #2c68fa;
 $color-button-hover: #0541d4;
 $color-button-text: #fff;
+$color-text-input: #4b8aff;
 
 .auth__welcome {
     font-weight: bold;
@@ -16,7 +17,7 @@ $color-button-text: #fff;
     font-size: 1.2em;
     text-align: center;
     background-color: $color-input;
-    color: #4b8aff;
+    color: $color-text-input;
     &:focus{
         outline: none;
     }
@@ -34,5 +35,5 @@ $color-button-text: #fff;
     &:hover {
         cursor: pointer;
         background: $color-button-hover;
-    }
+    } 
 }

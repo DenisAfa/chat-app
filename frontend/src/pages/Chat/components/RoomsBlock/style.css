@@ -1,4 +1,6 @@
 .rooms__wrapper {
+  display: flex;
+  flex-direction: column;
   width: 15%;
   padding-right: 2px;
   border-right: 2px solid #D3D3D3;
@@ -9,32 +11,8 @@
   border-bottom: 2px solid #D3D3D3;
 }
 
-.chat__rooms {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #2c68fa;
-  border-radius: 4px;
-  height: 50px;
-}
-
-.rooms__info {
-  flex: 0.5;
-  display: flex;
-  align-items: center;
-  margin-left: 5%;
-  color: #fff;
-}
-
-.rooms__exit {
-  display: flex;
-  flex: 0.5;
-  justify-content: flex-end;
-  margin-right: 5%;
-}
-
-.rooms__onlineIcon {
-  margin-right: 5%;
+.room__link {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style.css.map */

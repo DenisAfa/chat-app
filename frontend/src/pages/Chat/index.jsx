@@ -10,6 +10,7 @@ import { Context } from "../../context";
 import UsersBlock from "./components/UsersBlock";
 
 const ENDPOINT = "localhost:5000";
+// const ENDPOINT = "https://react-chat-test-app.herokuapp.com/";
 
 let socket;
 
@@ -21,6 +22,7 @@ const Chat = () => {
     message,
     changeMessagesList,
     changeUsersList,
+    addRoom,
   } = useContext(Context);
 
   const location = useLocation();
@@ -32,6 +34,7 @@ const Chat = () => {
 
     changeUserName(name);
     changeRoomName(room);
+    addRoom(room);
 
     socket.emit("join", { name, room }, (error) => {
       if (error) {
