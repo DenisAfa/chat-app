@@ -23,7 +23,6 @@ const Room = ({ roomName }) => {
         {isRoomActive ? (
           <img className="rooms__onlineIcon" src={onlineIcon} alt="online" />
         ) : null}
-
         <h3>{roomName}</h3>
       </div>
       <div className="rooms__exit">
