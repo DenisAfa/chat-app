@@ -12,7 +12,6 @@ const ADD_ROOM = "ADD-ROOM";
 const DELETE_ROOM = "DELETE-ROOM";
 
 const reducer = (state, action) => {
-  console.log(state);
   switch (action.type) {
     case CHANGE_USER_NAME:
       return { ...state, userName: action.newUserName };

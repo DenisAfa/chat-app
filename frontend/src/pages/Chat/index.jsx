@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useCallback } from "react";
 import queryString from "query-string";
 import io from "socket.io-client";
 import "./style.scss";
@@ -9,8 +9,7 @@ import MessagesField from "./components/MessagesField";
 import { Context } from "../../context";
 import UsersBlock from "./components/UsersBlock";
 
-const ENDPOINT = "localhost:5000";
-// const ENDPOINT = "https://react-chat-test-app.herokuapp.com/";
+const ENDPOINT = "https://react-chat-test-app.herokuapp.com/";
 
 let socket;
 
@@ -38,7 +37,7 @@ const Chat = () => {
 
     socket.emit("join", { name, room }, (error) => {
       if (error) {
-        alert(error);
+        console.log(error);
       }
     });
   }, [ENDPOINT, location.search]);
@@ -53,13 +52,16 @@ const Chat = () => {
     });
   }, []);
 
-  const sendMessage = (e) => {
-    e.preventDefault();
+  const sendMessage = useCallback(
+    (e) => {
+      e.preventDefault();
 
-    if (message) {
-      socket.emit("sendMessage", message, () => changeMessage(""));
-    }
-  };
+      if (message) {
+        socket.emit("sendMessage", message, () => changeMessage(""));
+      }
+    },
+    [message]
+  );
 
   return (
     <section className="chat">

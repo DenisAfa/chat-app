@@ -8,7 +8,7 @@ const Message = ({ message: { user, text } }) => {
   const dateSendMessage = useMemo(() => {
     const date = new Date().toLocaleTimeString().slice(0, -3);
     return date;
-  }, [text]);
+  }, []);
 
   let isSentByCurrentUser = false;
   const trimmedName = userName.trim().toLowerCase();

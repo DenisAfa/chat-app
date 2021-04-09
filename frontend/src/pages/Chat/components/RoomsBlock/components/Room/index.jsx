@@ -6,10 +6,10 @@ import { useLocation } from "react-router";
 import queryString from "query-string";
 import { Context } from "../../../../../../context";
 
-const Room = ({ roomName }) => {
+const Room = () => {
   const location = useLocation();
   const { room } = queryString.parse(location.search);
-  const { deleteRoom } = useContext(Context);
+  const { deleteRoom, roomName } = useContext(Context);
 
   const isRoomActive = roomName === room;
 
