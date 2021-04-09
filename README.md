@@ -2,7 +2,7 @@
 
 deploy: [chat-app-test](https://react-chat-test-app.netlify.app/)
 
-##Task
+## Task
 
 Develop a simple JavaScript application – text chat room:
 
@@ -14,7 +14,7 @@ Develop a simple JavaScript application – text chat room:
 * Users should see who sent message to the chat and when
 * Users should see who is in the chat room right now
 
-##Getting Started 
+## Getting Started 
 
 ```
 git clone https://github.com/DenisAfa/chat-app.git
